@@ -5,6 +5,7 @@
 % of these points.
 % "order" is the number of solves at each wavelength point, creating a
 % reduced model of size nG * order.
+%
 
 for i=1:nG
     freq = freq_s(i);
@@ -12,21 +13,21 @@ for i=1:nG
     % [Einc_minus,~] = Dipole_Excitation(r,ko,Eo,DipCoord);
     % Obtain coordinates of the domain
     Ocoord = reshape(r,L*M*N,3);
-    
-    
+
+
     % cutoff = 5*lambda_temp;
     % Generate E field
     [E] = E_field_DGF_mollified(Eo,DipCoord,Ocoord,ko,cutoff);
     Einc = reshape(E,L,M,N,3);
     Einc=Einc./max(max(max(abs(Einc))));
-    
+
     tau = 1j*omega*eo*Mop_mid;
     tau3 = [tau(:); tau(:); tau(:)]; % 3 Cartesian components in vector form
-    
+
     VRHS{i} = Gram.*tau3(idxS3).*Einc(idxS3);
-    
+
     [fN{i},opToep{i}] = getOPERATORS_SAM(r,freq,'N',[],'DEMCEM');
-    
+
 end
 
 % Calculate the derivatives of fN at the Legendre points
@@ -37,7 +38,7 @@ end
 
 for i=1:nG
     MVP_E{i} = @(J) mv_AN_const(J,fN_deriv{i},ones(size(Mop_mid)),Mop_mid,Gram,...
-        'notransp',idxS3,0) - Gram.*J;  
+        'notransp',idxS3,0) - Gram.*J;
 end
 
 
@@ -58,24 +59,24 @@ zd_WG = r_WG(:,:,:,3);
 for i=1:nG
     [fN_WG{i},opToeplitz_WG{i}] = getOPERATORS_SAM(r_WG,freq_s(i),'N',[],'DEMCEM');
 end
-    
+
 [L_WG,M_WG,N_WG,~] = size(r_WG);
-                
+
 freq = freq_mid;
 EMconstants;
 
-sigma_e_WG = zeros(L_WG,M_WG,N_WG); 
+sigma_e_WG = zeros(L_WG,M_WG,N_WG);
 sigma_e_WG = sigma0*fun_absorb(xd_WG);
 
 epsilon_r_WG = ones(L_WG,M_WG,N_WG);
-epsilon_r_WG = e_r; 
+epsilon_r_WG = e_r;
 
 mu_r_WG = ones(L_WG,M_WG,N_WG);
 mu_r_WG = m_r;
 
 epsilon_r_WG = epsilon_r_WG - 1j*sigma_e_WG/(eo*omega);
 % % keyboard
-% 
+%
 %% Assemble the entire matrix to look at e-values and condition number
 % Compute the relative permittivity and suceptibility
 Mr_WG = epsilon_r_WG;
@@ -136,12 +137,12 @@ for i=1:nG
 end
 
 [L_Sq,M_Sq,N_Sq,~] = size(r_Sq);
-                
+
 epsilon_r_Sq = ones(L_Sq,M_Sq,N_Sq);
-epsilon_r_Sq = e_r; 
+epsilon_r_Sq = e_r;
 
 % % keyboard
-% 
+%
 %%
 % Compute the relative permittivity and suceptibility
 Mr_Sq = epsilon_r_Sq;
@@ -181,7 +182,7 @@ if strcmp(problem_name,'ring')==1
 elseif strcmp(problem_name,'disk')==1
     idx_disk_in_sq = find((pointring_outer_in_sq(:)<=0));
 end
-    
+
 nD_sq=L_Sq*M_Sq*N_Sq;
 idx_disk_in_sq3 = [idx_disk_in_sq;nD_sq+idx_disk_in_sq;2*nD_sq+idx_disk_in_sq];
 
@@ -208,7 +209,7 @@ for iG=1:nG
     tSolve=toc(tini);
     nIts = length(resvec);
     fprintf('1-level preconditioner. Solve time = %.2f [sec] \n',tSolve)
-    fprintf('Iteration count = %d \n',nIts); 
+    fprintf('Iteration count = %d \n',nIts);
 end
 
 
@@ -232,7 +233,7 @@ for iG=1:nG
         nIts = length(resvec);
         fprintf('1-level preconditioner. Solve time = %.2f [sec] \n',tSolve)
         fprintf('Iteration count = %d \n',nIts);
-        
+
         for j = 1:n
             h(j,n) = Vtemp(:,j)'*v;
             v = v-h(j,n)*Vtemp(:,j);
