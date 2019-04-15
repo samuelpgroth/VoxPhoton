@@ -7,7 +7,7 @@ This will generate all the MEX files required.
 The only example script currently available is example_Bragg_1500nm_to_1600nm.m 
 This generates the transmission spectrum through a Bragg grating.
 
-# To do:
+## To do:
 1. Scripts to generate preconditioning results from paper [3], for straight waveguide, Bragg grating, disk resonator 
 (frequency-domain simulations)
 
@@ -19,8 +19,7 @@ This generates the transmission spectrum through a Bragg grating.
 
 4. Y-branch splitter
 
-
-
+## Publications
 There are currently three publications associated with this work:
 
 [1] Tambova, A., Groth, S. P., White, J. K., & Polimeridis, A. G. (2018). 
