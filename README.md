@@ -19,6 +19,8 @@ This generates the transmission spectrum through a Bragg grating.
 
 4. Y-branch splitter
 
+* Write documentation for everything!
+
 ## Publications
 There are currently three publications associated with this work:
 
