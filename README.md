@@ -5,7 +5,7 @@ To use, first enter the piecewise_constant subdirectory and run the build_const.
 This will generate all the MEX files required.
 
 The only example script currently available is example_Bragg_1500nm_to_1600nm.m 
-This performs generates the transmission spectrum through a Bragg grating.
+This generates the transmission spectrum through a Bragg grating.
 
 There are currently three publications associated with this work:
 
