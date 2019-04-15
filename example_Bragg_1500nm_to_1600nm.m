@@ -17,12 +17,12 @@ tStart = tic;
 %% Bragg grating geometrical parameters 
 % These parameters are chosen to be discretized exactly by 30nm voxels.
 % Modify if you desire finer discretizations.
-width = 510e-9;    % channel width: 510nm
-d = 210e-9;        % channel depth: 210nm
-LAM = 330e-9;      % period length
-delW = 60e-9;      % corrugation depth
+width = 500e-9;    % channel width: 510nm
+d = 225e-9;        % channel depth: 210nm
+LAM = 325e-9;      % period length
+delW = 50e-9;      % corrugation depth
 numPer = 50;       % number of periods
-resolution = 30e-9;% voxel size
+resolution = 25e-9;% voxel size
 
 % Model order reduction parameters
 nG = 5;            % number of wavelengths at which to solve for freq. sweep
