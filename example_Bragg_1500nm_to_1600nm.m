@@ -15,7 +15,7 @@ addpath(genpath('piecewise_constant')) % add the directory path
 tStart = tic;
 
 %% Bragg grating geometrical parameters 
-% These parameters are chosen to be discretized exactly by 30nm voxels.
+% These parameters are chosen to be discretized exactly by 25nm voxels.
 % Modify if you desire finer discretizations.
 width = 500e-9;    % channel width: 510nm
 d = 225e-9;        % channel depth: 210nm
