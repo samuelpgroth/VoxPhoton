@@ -21,7 +21,7 @@ width = 500e-9;    % channel width: 510nm
 d = 225e-9;        % channel depth: 210nm
 LAM = 325e-9;      % period length
 delW = 50e-9;      % corrugation depth
-numPer = 50;       % number of periods
+numPer = 100;       % number of periods
 resolution = 25e-9;% voxel size
 
 % Model order reduction parameters

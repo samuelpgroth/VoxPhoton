@@ -12,7 +12,7 @@ s_mid = (s_plus+s_minus)/2;
 [wG,xG]=gauss_1d(nG);
 
 s = s_mid + (s_plus-s_minus)/2 * xG;
-free_wavelength = (s_minus:1e-9:s_plus);
+free_wavelength = (s_minus:1e-10:s_plus);
 numLambda = length(free_wavelength);
 co = 299792458;             % speed of light in vacuum
 free_freq = co./free_wavelength * 1.444; 
