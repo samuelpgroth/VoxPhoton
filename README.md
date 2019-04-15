@@ -11,6 +11,8 @@ This generates the transmission spectrum through a Bragg grating.
 1. Scripts to generate preconditioning results from paper [3], for straight waveguide, Bragg grating, disk resonator 
 (frequency-domain simulations)
 
+2. Scripts to generate adiabatic absorber results from [1]
+
 2. Broadband disk and ring resonator simulations
 
 3. Directional coupler
